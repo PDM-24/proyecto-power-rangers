@@ -27,6 +27,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.pw2024.proyectomoviles.ui.component.TopBarRegister
 import com.pw2024.proyectomoviles.ui.theme.backgroundProject
 import com.pw2024.proyectomoviles.ui.theme.colorButtonRegister
