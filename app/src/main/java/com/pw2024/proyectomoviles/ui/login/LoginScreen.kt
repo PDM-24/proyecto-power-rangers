@@ -15,6 +15,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -32,15 +33,11 @@ import androidx.compose.ui.unit.sp
 import com.pw2024.proyectomoviles.R
 
 
-@Preview(showSystemUi = true)
 @Composable
-fun LoginScreen() {
-    val email = remember {
-        mutableStateOf("")
-    }
-    val password = remember {
-        mutableStateOf("")
-    }
+fun LoginScreen(viewModel: LoginViewModel) {
+    val loginState = viewModel.loginState.collectAsState()
+    val username = loginState.value.username
+    val password = loginState.value.password
     Scaffold {
         Column(
             modifier = Modifier
@@ -91,17 +88,21 @@ fun LoginScreen() {
                     )
                     Spacer(modifier = Modifier.height(30.dp))
                     OutlinedTextField(
-                        value = email.value,
-                        onValueChange = { email.value = it },
-                        label = { Text(text = "Email") },
+                        value = username,
+                        onValueChange = {
+                            viewModel.onEvent(LoginEvent.UpdateUsername(it))
+                        },
+                        label = { Text(text = "username") },
                         shape = RoundedCornerShape(30.dp),
                         modifier = Modifier
                             .width(300.dp)
 
                     )
                     OutlinedTextField(
-                        value = password.value,
-                        onValueChange = { password.value = it },
+                        value = password,
+                        onValueChange = {
+                            viewModel.onEvent(LoginEvent.UpdatePassword(it))
+                        },
                         label = { Text(text = "Contrasenia") },
                         shape = RoundedCornerShape(30.dp),
                         visualTransformation = PasswordVisualTransformation(),

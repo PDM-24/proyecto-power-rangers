@@ -11,37 +11,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.pw2024.proyectomoviles.ui.login.LoginScreen
+import com.pw2024.proyectomoviles.ui.login.LoginViewModel
 import com.pw2024.proyectomoviles.ui.theme.ProyectoMovilesTheme
 
 class MainActivity : ComponentActivity() {
+    val viewModel = LoginViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             ProyectoMovilesTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                LoginScreen(viewModel)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ProyectoMovilesTheme {
-        Greeting("Android")
     }
 }
