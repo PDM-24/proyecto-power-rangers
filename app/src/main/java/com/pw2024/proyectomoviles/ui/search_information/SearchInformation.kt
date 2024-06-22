@@ -27,11 +27,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.pw2024.proyectomoviles.ui.theme.colorSearch
 
-@Preview
 @Composable
-fun ComponentScreenSearch() {
+fun SearchInformation() {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {

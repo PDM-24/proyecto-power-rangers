@@ -29,7 +29,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.pw2024.proyectomoviles.R
+import com.pw2024.proyectomoviles.model.navigate.AppScreen
 import com.pw2024.proyectomoviles.ui.theme.colorButtonPassword
 
 @Composable
