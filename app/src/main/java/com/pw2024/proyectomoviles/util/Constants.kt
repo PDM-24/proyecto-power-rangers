@@ -38,4 +38,6 @@ object Constants {
     const val FACEBOOK = "facebook"
     const val INSTAGRAM = "instagram"
     const val TWITTER = "twitter"
+    //Token
+    const val ACCESS_TOKEN = "accessToken"
 }
