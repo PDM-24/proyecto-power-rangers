@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.pw2024.proyectomoviles.ui.change_password.ChangePassword
 import com.pw2024.proyectomoviles.ui.code_password.CodePassword
 import com.pw2024.proyectomoviles.ui.forgot_password.ForgotPassword
