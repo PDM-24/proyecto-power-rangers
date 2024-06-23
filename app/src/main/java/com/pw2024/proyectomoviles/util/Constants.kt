@@ -23,4 +23,19 @@ object Constants {
     //Image
     const val PUBLIC_ID = "publicId"
     const val URL = "url"
+    //User
+    const val NAME = "name"
+    const val USERNAME = "username"
+    const val PASSWORD = "password"
+    const val EMAIL = "email"
+    const val CONTACT = "contact"
+    const val RATING = "rating"
+    const val IS_ACTIVE = "isActive"
+    const val IS_ADMIN = "isAdmin"
+    //Contact
+    const val PHONE_NUMBER = "phoneNumber"
+    const val WHATSAPP = "whatsapp"
+    const val FACEBOOK = "facebook"
+    const val INSTAGRAM = "instagram"
+    const val TWITTER = "twitter"
 }
