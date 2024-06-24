@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     startDestination = Screen.LoginScreen.route
                 ) {
                     composable(Screen.LoginScreen.route) {
-                        LoginScreen(loginViewModel)
+                        LoginScreen(loginViewModel, navController)
                     }
                     composable(Screen.HomeScreen.route) {
                         HomeScreen(homeViewModel)
