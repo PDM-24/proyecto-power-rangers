@@ -57,7 +57,12 @@ class LoginViewModel: ViewModel() {
                 _eventFlow.emit(
                     UiEvent.ShowSnackbar(errorMessage ?: "Algo ha ocurrido...")
                 )
+            } catch (e: Exception) {
+                _eventFlow.emit(
+                    UiEvent.ShowSnackbar("Contacta a servicio tecnico...")
+                )
             }
+
         }
     }
 
