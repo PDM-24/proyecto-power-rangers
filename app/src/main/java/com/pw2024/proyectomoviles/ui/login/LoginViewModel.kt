@@ -40,9 +40,6 @@ class LoginViewModel: ViewModel() {
                         password = _loginState.value.password
                     )
                     sendLoginRequest(loginRequest)
-                    _eventFlow.emit(
-                        UiEvent.NavigateToHomeScreen
-                    )
                 }
             }
         }
@@ -52,6 +49,9 @@ class LoginViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 var response = ApiClient.apiService.login(loginRequest)
+                _eventFlow.emit(
+                    UiEvent.NavigateToHomeScreen
+                )
             } catch (e: HttpException) {
                 val errorMessage = extractErrorMessage(e)
                 _eventFlow.emit(

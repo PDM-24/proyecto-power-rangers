@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                         LoginScreen(loginViewModel, navController)
                     }
                     composable(Screen.HomeScreen.route) {
-                        HomeScreen(homeViewModel)
+                        HomeScreen(homeViewModel, navController)
                     }
                 }
             }
