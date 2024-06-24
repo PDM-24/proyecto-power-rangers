@@ -1,4 +1,6 @@
 package com.pw2024.proyectomoviles.ui.home
 
-class HomeViewModel {
+import androidx.lifecycle.ViewModel
+
+class HomeViewModel: ViewModel() {
 }
