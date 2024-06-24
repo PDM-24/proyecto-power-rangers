@@ -112,7 +112,9 @@ fun LoginScreen(viewModel: LoginViewModel) {
                     )
                     Spacer(modifier = Modifier.height(30.dp))
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = {
+                            viewModel.onEvent(LoginEvent.Login)
+                        },
                         modifier = Modifier
                             .width(300.dp)
                     ) {

@@ -2,6 +2,7 @@ package com.pw2024.proyectomoviles.util
 
 object Constants {
     //Serialized names
+    const val API_PATH = "/api"
     //Post
     const val DATE_PUBLISHED = "datePublished"
     const val PUBLISHED_BY = "publishedBy"
@@ -40,4 +41,6 @@ object Constants {
     const val TWITTER = "twitter"
     //Token
     const val ACCESS_TOKEN = "accessToken"
+    //Error
+    const val ERROR = "error"
 }
