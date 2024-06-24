@@ -9,7 +9,7 @@ import com.pw2024.proyectomoviles.R
 fun NavBarItemList(): List<NavBarItem> {
     return listOf(
         NavBarItem(
-            AppScreen.Register.route,
+            AppScreen.LoginScreen.route,
             ImageVector.vectorResource(id = R.drawable.baseline_home_24)
         ),
         NavBarItem(
@@ -17,7 +17,7 @@ fun NavBarItemList(): List<NavBarItem> {
             ImageVector.vectorResource(id = R.drawable.baseline_search_24)
         ),
         NavBarItem(
-            AppScreen.CodePassword.route,
+            AppScreen.NewPost.route,
             ImageVector.vectorResource(id = R.drawable.baseline_add_24)
         ),
         NavBarItem(
