@@ -13,21 +13,4 @@ import com.pw2024.proyectomoviles.data.local.entity.TokenEntity
 )
 abstract class AuroraDatabase : RoomDatabase() {
     abstract fun tokenDao(): TokenDao
-
-    companion object {
-        @Volatile
-        private var INSTANCE: AuroraDatabase? = null
-
-        fun getDatabase(context: Context): AuroraDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context,
-                    AuroraDatabase::class.java,
-                    "aurora_db"
-                ).fallbackToDestructiveMigration().build()
-                INSTANCE = instance
-                return instance
-            }
-        }
-    }
 }
