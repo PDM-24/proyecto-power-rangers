@@ -19,12 +19,7 @@ fun HomeScreen(
             modifier = Modifier
                 .padding(paddingValues = it)
         ) {
-            PostCard(
-                "Lorem Ipsum",
-                "200",
-                "https://res.cloudinary.com/dmjhkm8qw/image/upload/v1718857856/aurora/jdzukzrhafzrcsrfyvdq.png",
-                onCheckClick = {}
-            )
+
         }
     }
 }

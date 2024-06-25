@@ -28,6 +28,7 @@ import com.pw2024.proyectomoviles.ui.my_posts.MyPostsScreen
 import com.pw2024.proyectomoviles.ui.theme.ProyectoMovilesTheme
 import com.pw2024.proyectomoviles.util.Screen
 import com.pw2024.proyectomoviles.util.bottomNavItems
+import com.pw2024.proyectomoviles.util.navbarlessRoutes
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
                 val loginViewModel: LoginViewModel by viewModels()
                 val navController = rememberNavController()
                 val currentRoute by navController.currentBackStackEntryFlow.collectAsState(initial = null)
-                val showBottomBar = currentRoute?.destination?.route != Screen.LoginScreen.route
+                val showBottomBar = currentRoute?.destination?.route !in navbarlessRoutes
                 Scaffold(
                     bottomBar = {
                         if(showBottomBar) {
