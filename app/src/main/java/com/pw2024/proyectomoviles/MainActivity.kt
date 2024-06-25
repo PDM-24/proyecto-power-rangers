@@ -10,6 +10,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -21,6 +22,8 @@ import androidx.navigation.compose.rememberNavController
 import com.pw2024.proyectomoviles.ui.account.AccountScreen
 import com.pw2024.proyectomoviles.ui.home.HomeScreen
 import com.pw2024.proyectomoviles.ui.home.HomeViewModel
+import com.pw2024.proyectomoviles.ui.login.LoginScreen
+import com.pw2024.proyectomoviles.ui.login.LoginViewModel
 import com.pw2024.proyectomoviles.ui.my_posts.MyPostsScreen
 import com.pw2024.proyectomoviles.ui.theme.ProyectoMovilesTheme
 import com.pw2024.proyectomoviles.util.Screen
@@ -37,36 +40,44 @@ class MainActivity : ComponentActivity() {
                 }
                 //val loginViewModel: LoginViewModel by viewModels()
                 val homeViewModel: HomeViewModel by viewModels()
+                val loginViewModel: LoginViewModel by viewModels()
                 val navController = rememberNavController()
+                val currentRoute by navController.currentBackStackEntryFlow.collectAsState(initial = null)
+                val showBottomBar = currentRoute?.destination?.route != Screen.LoginScreen.route
                 Scaffold(
                     bottomBar = {
-                        NavigationBar {
-                            bottomNavItems.forEachIndexed { index, bottomNavigationItem -> 
-                                NavigationBarItem(
-                                    selected = selectedItemIndex == index,
-                                    onClick = {
-                                        selectedItemIndex = index
-                                        navController.navigate(bottomNavigationItem.route)
-                                    },
-                                    icon = {
-                                        Icon(
-                                            imageVector = if(index == selectedItemIndex) {
-                                                bottomNavigationItem.selectedIcon
-                                            } else bottomNavigationItem.unselectedIcon,
-                                            contentDescription = bottomNavigationItem.title
-                                        )
-                                    }
-                                )
+                        if(showBottomBar) {
+                            NavigationBar {
+                                bottomNavItems.forEachIndexed { index, bottomNavigationItem ->
+                                    NavigationBarItem(
+                                        selected = selectedItemIndex == index,
+                                        onClick = {
+                                            selectedItemIndex = index
+                                            navController.navigate(bottomNavigationItem.route)
+                                        },
+                                        icon = {
+                                            Icon(
+                                                imageVector = if(index == selectedItemIndex) {
+                                                    bottomNavigationItem.selectedIcon
+                                                } else bottomNavigationItem.unselectedIcon,
+                                                contentDescription = bottomNavigationItem.title
+                                            )
+                                        }
+                                    )
+                                }
                             }
                         }
                     }
                 ) { paddingValues ->
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.HomeScreen.route,
+                        startDestination = Screen.LoginScreen.route,
                         modifier = Modifier
                             .padding(paddingValues)
                     ) {
+                        composable(Screen.LoginScreen.route) {
+                            LoginScreen(loginViewModel, navController)
+                        }
                         composable(Screen.HomeScreen.route) {
                             HomeScreen(homeViewModel, navController)
                         }
