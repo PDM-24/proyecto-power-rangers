@@ -11,4 +11,8 @@ data class PostDto(
     val publishedBy: String,
     @SerializedName(Constants.TRANSACTION_TYPE)
     val transactionType: String,
+    @SerializedName(Constants.BOOK)
+    val bookDto: BookDto,
+    @SerializedName(Constants.IMAGE)
+    val imageDto: ImageDto
 )

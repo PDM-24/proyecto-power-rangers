@@ -6,15 +6,25 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import com.pw2024.proyectomoviles.ui.home.components.PostCard
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    viewModel: HomeViewModel,
+    navController: NavController
+) {
     Scaffold {
         Column(
             modifier = Modifier
                 .padding(paddingValues = it)
         ) {
-            Text("Home Screen")
+            PostCard(
+                "Lorem Ipsum",
+                "200",
+                "https://res.cloudinary.com/dmjhkm8qw/image/upload/v1718857856/aurora/jdzukzrhafzrcsrfyvdq.png",
+                onCheckClick = {}
+            )
         }
     }
 }
