@@ -3,6 +3,8 @@ package com.pw2024.proyectomoviles.ui.login
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pw2024.proyectomoviles.data.local.database.MyApplication
+import com.pw2024.proyectomoviles.data.local.entity.TokenEntity
 import com.pw2024.proyectomoviles.data.remote.api.ApiClient
 import com.pw2024.proyectomoviles.data.remote.request.LoginRequest
 import com.pw2024.proyectomoviles.util.ErrorExtractor.Companion.extractErrorMessage
@@ -16,6 +18,7 @@ import org.json.JSONObject
 import retrofit2.HttpException
 
 class LoginViewModel: ViewModel() {
+    private val auroraDB = MyApplication.database
     private val _loginState = MutableStateFlow(LoginState())
     val loginState = _loginState.asStateFlow()
     private val _eventFlow = MutableSharedFlow<UiEvent>()
@@ -48,7 +51,11 @@ class LoginViewModel: ViewModel() {
     private fun sendLoginRequest(loginRequest: LoginRequest) {
         viewModelScope.launch {
             try {
-                var response = ApiClient.apiService.login(loginRequest)
+                val response = ApiClient.apiService.login(loginRequest)
+                val accessToken = TokenEntity(
+                    accessToken = response.accessToken
+                )
+                saveToken(accessToken)
                 _eventFlow.emit(
                     UiEvent.NavigateToHomeScreen
                 )
@@ -63,6 +70,13 @@ class LoginViewModel: ViewModel() {
                 )
             }
 
+        }
+    }
+
+    private fun saveToken(token: TokenEntity) {
+        viewModelScope.launch {
+            auroraDB.tokenDao().deleteToken()
+            auroraDB.tokenDao().insertToken(token)
         }
     }
 
